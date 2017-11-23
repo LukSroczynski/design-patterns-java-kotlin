@@ -1,0 +1,60 @@
+group 'builder.braintelligence'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.1.60'
+    ext.logback_version = '1.2.3'
+    ext.slf4j_version = '1.7.25'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.0.2"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+junitPlatform {
+    filters {
+        engines {
+            include 'spek'
+        }
+    }
+}
+
+repositories {
+    maven { url "http://dl.bintray.com/jetbrains/spek" }
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    compile "org.slf4j:slf4j-api:$slf4j_version"
+
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+
+    testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.5'
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.2"
+    testCompile 'org.jetbrains.spek:spek-api:1.1.5'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
