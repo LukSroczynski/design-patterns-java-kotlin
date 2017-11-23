@@ -1,5 +1,4 @@
-rootProject.name = 'kotlin-java-design-patterns-with-tests-spock-spek-groovy'
-include '_template_'
+rootProject.name = 'design-patterns-java-kotlin'
 include 'builder'
 include 'decorator'
 
