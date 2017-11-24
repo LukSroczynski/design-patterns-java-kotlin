@@ -42,6 +42,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "org.slf4j:slf4j-api:$slf4j_version"
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+
 
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
 
